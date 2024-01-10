@@ -23,8 +23,6 @@ class SupportController extends Controller
         $data = $request->all();
         $data['status'] = 'a';
 
-        $support = Support::create($data);
-
         return redirect()->route('supports.index');
     }
     public function show(string | int $id)
