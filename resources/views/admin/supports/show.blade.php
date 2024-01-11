@@ -13,3 +13,7 @@
     @method("DELETE")
     <button type="deletar">Excluir</button>
 </form>
+<hr>
+<div>
+    <a href="{{ route('supports.index') }}">Sair</a>
+</div>

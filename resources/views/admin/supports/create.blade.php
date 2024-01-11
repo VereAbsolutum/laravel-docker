@@ -19,3 +19,7 @@
         <button type="submit">Enviar</button>
     </div>
 </form>
+<hr>
+<div>
+    <a href="{{ route('supports.index') }}">Sair</a>
+</div>
