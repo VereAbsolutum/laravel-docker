@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\SupportStatus;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Admin\SupportController;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,17 @@ Route::get('/home', function () {
     return view('welcome');
 });
 */
+
+/**
+ * Test
+ */
+Route::get(
+    "/test",
+    function () {
+        dd(array_column(SupportStatus::cases(), 'name'));
+    }
+);
+
 
 /**
  * SUPPORT
