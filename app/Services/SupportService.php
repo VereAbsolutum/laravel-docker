@@ -7,14 +7,12 @@ use App\DTO\Supports\{
     UpdateSupportDTO
 };
 
-use App\Repositories\{
+use App\Repositories\Contracts\{
+    PaginateInterface, 
     SupportRepositoryInterface
 };
 
-use App\Repositories\Contracts\PaginateInterface;
-use App\Repositories\SupportEloquentORM;
 use stdClass;
-
 
 class SupportService
 {

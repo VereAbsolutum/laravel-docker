@@ -6,8 +6,10 @@ use App\DTO\Supports\{
     CreateSupportDTO,
     UpdateSupportDTO
 };
+
 use App\Repositories\PaginationPresenter;
-use App\Repositories\SupportRepositoryInterface;
+use App\Repositories\Contracts\SupportRepositoryInterface;
+
 use App\Models\Support;
 use stdClass;
 
