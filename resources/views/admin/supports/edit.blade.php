@@ -1,6 +1,11 @@
-<h1>Dúvida {{ $support->id }}</h1>
+@extends('admin.layouts.app')
+@section('title', 'Editar')
+@section('header')
 
-<x-alert />
+<h1 class="text-lg text-black-500">Editar Dúvida {{ $support->id }}</h1>
+
+@endsection
+@section('content')
 
 <form action="{{ route('supports.update', $support->id) }}" method="POST">
     @method('PUT')
@@ -9,7 +14,5 @@
     'buttonLabel' => 'Atualizar'
     ])
 </form>
-<hr>
-<div>
-    <a href="{{ route('supports.index') }}">Sair</a>
-</div>
+
+@endsection
