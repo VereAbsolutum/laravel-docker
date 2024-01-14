@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\SupportController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,5 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// 1|8F0blcCMaxDWa5IUUEYdjGyqxrp7sYFkiFpJ4WZQ240f7462
+Route::post('/login', [AuthController::class, 'auth']);
 
-Route::apiResource('/supports', SupportController::class);
+Route::middleware(['auth:sanctum'])->group(function() {
+    Route::apiResource('/supports', SupportController::class);
+});
+
+// Route::apiResource('/supports', SupportController::class);
