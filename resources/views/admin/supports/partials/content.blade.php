@@ -42,7 +42,7 @@
                                 </a>
                             </td>
                             <td class="px-12 py-2 text-sm font-medium whitespace-nowrap ">
-                                <a href="{{ route('supports.show', $support->id) }}" class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg dark:text-white"">
+                                <a href="{{ route('replies.index', $support->id) }}" class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg dark:text-white"">
                                     Show
                                 </a>
                             </td>
