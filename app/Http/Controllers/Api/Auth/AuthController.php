@@ -35,4 +35,22 @@ class AuthController extends Controller
             'token'=> $token,
         ]);
     }
+
+    public function logout(Request $request)
+    {
+        $request->user()->tokens()->delete();
+
+        return  response()->json([
+            'message'=> 'success',
+        ]);
+    }
+
+    public function  me(Request $request)
+    {
+        $user = $request->user();
+
+        return  response()->json([
+            'me'=> $user,
+        ]);
+    }
 }
