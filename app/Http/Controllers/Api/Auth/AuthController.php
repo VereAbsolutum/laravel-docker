@@ -3,14 +3,16 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\AuthRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    public function  auth(Request $request)
+    public function  auth(AuthRequest $request)
     {
         $user = User::where('email', $request->email)->first();
 
