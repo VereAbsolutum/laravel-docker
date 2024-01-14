@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-// 1|8F0blcCMaxDWa5IUUEYdjGyqxrp7sYFkiFpJ4WZQ240f7462
 Route::post('/login', [AuthController::class, 'auth']);
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+Route::get('/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
 
 Route::middleware(['auth:sanctum'])->group(function() {
     Route::apiResource('/supports', SupportController::class);
