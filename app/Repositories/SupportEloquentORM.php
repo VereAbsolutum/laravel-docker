@@ -11,6 +11,7 @@ use App\Repositories\PaginationPresenter;
 use App\Repositories\Contracts\SupportRepositoryInterface;
 
 use App\Models\Support;
+use Illuminate\Support\Facades\Gate;
 use stdClass;
 
 // dd(SupportRepositoryInterface::class);
@@ -28,6 +29,10 @@ class SupportEloquentORM implements SupportRepositoryInterface
         string $filter = null
     ): PaginationPresenter {
         $result = $this->model
+            ->with('replies', function ($query) {
+                $query->limit(4);
+                $query->latest;
+            })
             ->where(function ($query) use ($filter) {
                 if ($filter) {
                     $query->where('subject', $filter);
@@ -56,7 +61,7 @@ class SupportEloquentORM implements SupportRepositoryInterface
 
     public function findOne(string|int $id): stdClass|null
     {
-        $support = $this->model->find($id);
+        $support = $this->model->with('user')->find($id);
 
         if (!$support) {
             return null;
@@ -68,6 +73,12 @@ class SupportEloquentORM implements SupportRepositoryInterface
     public function delete(string|int $id): void
     {
         $support = $this->model->findOrFail($id);
+
+        if (Gate::denies('owner', $support->user->id)) {
+            abort(403, 'Not Authorized');
+        }
+
+        // dd($support->all());
         $support->delete();
     }
 
@@ -83,6 +94,11 @@ class SupportEloquentORM implements SupportRepositoryInterface
         if (!$support = $this->model->find($dto->id)) {
             return null;
         }
+
+        if (Gate::denies('owner', $support->user->id)) {
+            abort(403, 'Not Authorized');
+        }
+
 
         $support->update((array) $dto);
 

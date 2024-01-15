@@ -13,7 +13,11 @@ export default defineConfig({
     ],
     server: {
         proxy: {
-            '/': 'http://laravel.test:83', // Ajuste para a URL correta do seu servidor Laravel
+            '/': {
+                target: 'http://laravel.test:83', // Substitua pelo seu domínio Laravel
+                changeOrigin: true,
+                ws: true,
+            },
         },
     },
 });

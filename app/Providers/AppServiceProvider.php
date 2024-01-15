@@ -5,10 +5,10 @@ namespace App\Providers;
 use App\Models\Support;
 use App\Observers\SupportObserver;
 
-use App\Repositories\Contracts\ReplyRepositoryInterface as ContractsReplyRepositoryInterface;
+use App\Repositories\Contracts\ReplyRepositoryInterface;
 use App\Repositories\Contracts\SupportRepositoryInterface as ContractsSupportRepositoryInterface;
 
-use App\Repositories\Eloquent\ReplySupportORM;
+use App\Repositories\Eloquent\ReplySupportRepository;
 use App\Repositories\SupportEloquentORM;
 
 use Illuminate\Support\ServiceProvider;
@@ -26,8 +26,8 @@ class AppServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
-            ContractsReplyRepositoryInterface::class,
-            ReplySupportORM::class
+            ReplyRepositoryInterface::class,
+            ReplySupportRepository::class,
         );
     }
 

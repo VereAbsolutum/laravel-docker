@@ -8,7 +8,7 @@ use App\DTO\Supports\{
 };
 
 use App\Repositories\Contracts\{
-    PaginateInterface, 
+    PaginateInterface,
     SupportRepositoryInterface
 };
 

@@ -46,7 +46,7 @@ class SupportController extends Controller
         $this->service->new(CreateSupportDTO::makeFromRequest($request));
 
         return redirect()
-        ->route('supports.index')
+           ->route('supports.index')
         ->with('message', 'Cadastrado com sucesso');
     }
     public function show(string | int $id)

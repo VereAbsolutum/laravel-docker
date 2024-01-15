@@ -49,6 +49,7 @@ Route::middleware('auth')->group(function () {
      */
 
     Route::post('/supports/{id}/replies', [ReplySupportController::class, 'store'])->name("replies.store");
+    Route::delete('/supports/{id}/replies/{reply}', [ReplySupportController::class, 'destroy'])->name("replies.destroy");
     Route::get('/supports/{id}/replies', [ReplySupportController::class, 'index'])->name("replies.index");
 
     Route::delete("/supports/{id}", [SupportController::class, 'destroy'])->name('supports.destroy');
@@ -57,7 +58,6 @@ Route::middleware('auth')->group(function () {
     Route::get("/supports/create", [SupportController::class, 'create'])->name('supports.create');
     Route::get('/supports', [SupportController::class, 'index'])->name("supports.index");
     Route::post('/supports', [SupportController::class, 'store'])->name('supports.store');
-
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

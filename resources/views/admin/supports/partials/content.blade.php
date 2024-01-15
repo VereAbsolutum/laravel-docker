@@ -31,18 +31,20 @@
                                 {{ $support->subject }}
                             </td>
                             <td class="px-12 py-2 text-sm font-medium whitespace-nowrap dark:text-white"">
-                                <x-status-support :status="$support->status"/>
+                                <x-status-support :status=" $support->status"/>
                             </td>
                             <td class="px-12 py-2 text-sm font-medium whitespace-nowrap dark:text-white"">
                                 {{ $support->body }}
                             </td>
-                            <td class="px-12 py-2 text-sm font-medium whitespace-nowrap ">
-                                <a href="{{ route('supports.edit', $support->id) }}" class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg dark:text-white"">
+                            <td class=" px-12 py-2 text-sm font-medium whitespace-nowrap ">
+                                @can('owner', $support->user_id)
+                                <a href=" {{ route('supports.edit', $support->id) }}" class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg dark:text-white"">
                                     Editar
                                 </a>
+                                @endcan
                             </td>
-                            <td class="px-12 py-2 text-sm font-medium whitespace-nowrap ">
-                                <a href="{{ route('replies.index', $support->id) }}" class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg dark:text-white"">
+                            <td class=" px-12 py-2 text-sm font-medium whitespace-nowrap ">
+                                <a href=" {{ route('replies.index', $support->id) }}" class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg dark:text-white"">
                                     Show
                                 </a>
                             </td>
