@@ -48,6 +48,7 @@ Route::middleware('auth')->group(function () {
      * SUPPORT
      */
 
+    Route::post('/supports/{id}/replies', [ReplySupportController::class, 'store'])->name("replies.store");
     Route::get('/supports/{id}/replies', [ReplySupportController::class, 'index'])->name("replies.index");
 
     Route::delete("/supports/{id}", [SupportController::class, 'destroy'])->name('supports.destroy');
