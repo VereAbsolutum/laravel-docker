@@ -29,10 +29,11 @@ class SupportEloquentORM implements SupportRepositoryInterface
         string $filter = null
     ): PaginationPresenter {
         $result = $this->model
-            ->with('replies', function ($query) {
+            ->with(['replies' => function ($query) {
                 $query->limit(4);
-                $query->latest;
-            })
+                $query->latest();
+                $query->with('user');
+            }])
             ->where(function ($query) use ($filter) {
                 if ($filter) {
                     $query->where('subject', $filter);
