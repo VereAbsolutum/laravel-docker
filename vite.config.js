@@ -12,12 +12,12 @@ export default defineConfig({
         }),
     ],
     server: {
-        proxy: {
-            '/': {
-                target: 'http://laravel.test:83', // Substitua pelo seu domínio Laravel
-                changeOrigin: true,
-                ws: true,
-            },
-        },
-    },
+        host: '0.0.0.0',
+        port: 5173,
+        hmr: {
+            port: 5173,
+            clientPort: 5173,
+            host: 'localhost'
+        }
+    }
 });
